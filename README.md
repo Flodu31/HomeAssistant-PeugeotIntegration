@@ -10,9 +10,9 @@ To do this, you need:
 The goal will be to retrive information, from the URL http://yourIP:5000/get_vehicleinfo/yourVIN.
 It is a JSON, that will be parsed by Home Assistant.
 
-This script will evolve, depending of releases of the psa_car_controller;
+This script will evolve, depending of releases of the psa_car_controller. And my time :)
 
-**/config/sensor.yaml**:
+Edit the file **/config/sensor.yaml** and add the following code, by replacing the URL with your own:
 
 ```yaml
 # Peugeot e2008  
@@ -47,4 +47,31 @@ This script will evolve, depending of releases of the psa_car_controller;
         friendly_name: "Mileage"
         unit_of_measurement: "km"
         value_template: '{{ states.sensor.peugeot_e2008.attributes["timed_odometer"]["mileage"] }}'
+```
+
+Restart the Home assistant.
+You should now be able to see these entities:
+
+![image](https://user-images.githubusercontent.com/15648175/112606253-70565f00-8e18-11eb-9aee-d94b9a34fcea.png)
+
+You can now add a beautiful dashboard, to see your values:
+
+```
+type: entities
+entities:
+  - entity: sensor.e2008_mileage
+  - entity: sensor.e2008_battery_level
+    secondary_info: last-updated
+  - entity: sensor.e2008_battery_voltage
+    secondary_info: last-updated
+  - entity: sensor.e2008_battery_autonomy
+  - entity: sensor.e2008_charging_status
+title: Peugeot e2008
+header:
+  type: picture
+  image: /local/images/e2008.png
+  tap_action:
+    action: none
+  hold_action:
+    action: none
 ```
