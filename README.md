@@ -60,12 +60,15 @@ You can now add a beautiful dashboard, to see your values:
 type: entities
 entities:
   - entity: sensor.e2008_mileage
+    secondary_info: last-updated
   - entity: sensor.e2008_battery_level
     secondary_info: last-updated
   - entity: sensor.e2008_battery_voltage
     secondary_info: last-updated
   - entity: sensor.e2008_battery_autonomy
+    secondary_info: last-updated
   - entity: sensor.e2008_charging_status
+    secondary_info: last-updated
 title: Peugeot e2008
 header:
   type: picture
