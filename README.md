@@ -31,7 +31,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
       e2008_battery_voltage:
         friendly_name: "Battery Voltage"
         unit_of_measurement: "V"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["battery"]["voltage"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["battery"]["voltage"] * 4 }}'
       e2008_battery_level:
         friendly_name: "Battery"
         unit_of_measurement: "%"
