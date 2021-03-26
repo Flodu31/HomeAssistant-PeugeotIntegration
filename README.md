@@ -75,3 +75,12 @@ header:
   hold_action:
     action: none
 ```
+```
+type: gauge
+entity: sensor.e2008_battery_level
+min: 0
+max: 100
+name: e2008 Battery
+```
+
+Don't hesitate if you have any remarks/suggestions/questions :)
