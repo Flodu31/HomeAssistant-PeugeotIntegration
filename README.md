@@ -114,12 +114,22 @@ header:
 show_header_toggle: false
 state_color: false
 ```
+To have a more viewable view of the battery, like this:
+
+![image](https://user-images.githubusercontent.com/15648175/113413772-b6349980-93bb-11eb-87a5-5e4b80df3ca3.png)
+
+Use the following code in your dashboard:
+
 ```
 type: gauge
 entity: sensor.e2008_battery_level
 min: 0
 max: 100
 name: e2008 Battery
+severity:
+  green: 60
+  yellow: 40
+  red: 20
 ```
 
 Don't hesitate if you have any remarks/suggestions/questions :)
