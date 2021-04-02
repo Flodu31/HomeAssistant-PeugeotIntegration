@@ -4,7 +4,7 @@ Here is a small description to do the integration between your home assistant, a
 ![image](https://user-images.githubusercontent.com/15648175/112605213-58321000-8e17-11eb-862b-97d2704cc2d4.png)
 
 To do this, you need:
-- A running Home Assistant
+- A running Home Assistant with Lovelace installed: https://www.home-assistant.io/lovelace/
 - The psa_car_controller (on a dedicated machine or on your home assistant server): https://github.com/flobz/psa_car_controller
 
 The goal will be to retrive information, from the URL http://yourIP:5000/get_vehicleinfo/yourVIN.
