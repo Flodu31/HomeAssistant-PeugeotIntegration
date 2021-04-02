@@ -35,14 +35,14 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
       e2008_battery_level:
         friendly_name: "Battery"
         unit_of_measurement: "%"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["level"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][1]["level"] }}'
       e2008_battery_autonomy:
         friendly_name: "Autonomy"
         unit_of_measurement: "km"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["autonomy"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][1]["autonomy"] }}'
       e2008_charging_status:
         friendly_name: "Charging Status"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["charging"]["status"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][1]["charging"]["status"] }}'
       e2008_mileage:
         friendly_name: "Mileage"
         unit_of_measurement: "km"
