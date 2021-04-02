@@ -68,10 +68,59 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
         value_template: '{{ states.sensor.peugeot_e2008_charge_control.attributes["percentage_threshold"] }}'
 ```
 
+Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
+
+```
+# e2008 communication
+switch:
+  - platform: command_line
+    switches:
+      e2008_change_threshold:
+        command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=80"
+        command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=100"
+      e2008_change_charge_hour:
+        command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=5&minute=0"
+        command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=0&minute=0"
+      e2008_clim:
+        command_on: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/1"
+        command_off: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/0"
+       
+# e2008 WakeUp
+rest_command:
+  e2008_wakeup:
+    url: "http://IPofTheSoftware:5000/wakeup/YourVIN"
+```
+The first part is to change values and the second part is to wake up the vehicle, every morning at 6 AM:
+
+```
+- id: '1617352487'
+  alias: WakeUp e2008
+  description: ''
+  trigger:
+  - platform: time
+    at: '6:00:00'
+  condition: []
+  action:
+  - service: rest_command.e2008_wakeup
+  mode: single
+```
+
 Restart the Home assistant.
 You should now be able to see these entities:
 
 ![image](https://user-images.githubusercontent.com/15648175/113413669-7a99cf80-93bb-11eb-8744-78edec8c92e2.png)
+
+In my **customize.yaml** file, I also added this:
+
+```
+# Add an entry for each entity that you want to overwrite.
+  switch.e2008_change_threshold:
+    assumed_state: false
+  switch.e2008_change_charge_hour:
+    assumed_state: false
+  switch.e2008_clim:
+    assumed_state: false
+```
 
 You can now add a beautiful dashboard, to see your values:
 
