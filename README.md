@@ -50,7 +50,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
 # Peugeot e2008 charge_control
   - platform: rest
     name: peugeot_e2008_charge_control
-    resource: http://IPofTheSoftware:5000/charge_control?vin=YourVIN
+    resource: http://IPofTheSoftware:5000/charge_control?vin=YourVIN&?always_check=true
     scan_interval: 60
     timeout: 30
     value_template: 'OK'
