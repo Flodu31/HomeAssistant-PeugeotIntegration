@@ -35,11 +35,11 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
       e2008_battery_level:
         friendly_name: "Battery"
         unit_of_measurement: "%"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["level"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["level"] | round(0) }}'
       e2008_battery_autonomy:
         friendly_name: "Autonomy"
         unit_of_measurement: "km"
-        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["autonomy"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["autonomy"] | round(0) }}}}'
       e2008_charging_status:
         friendly_name: "Charging Status"
         value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["charging"]["status"] }}'
@@ -65,7 +65,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
       e2008_threshold:
         friendly_name: "Threshold"
         unit_of_measurement: "%"
-        value_template: '{{ states.sensor.peugeot_e2008_charge_control.attributes["percentage_threshold"] }}'
+        value_template: '{{ states.sensor.peugeot_e2008_charge_control.attributes["percentage_threshold"] | round(0) }}'
 ```
 
 Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
