@@ -18,7 +18,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
 # Peugeot e2008  
   - platform: rest
     name: peugeot_e2008
-    resource: http://IPofTheSoftware:5000/get_vehicleinfo/YourVIN
+    resource: http://IPofTheSoftware:5000/get_vehicleinfo/YourVIN?from_cache=1
     scan_interval: 60
     timeout: 30
     value_template: 'OK'
