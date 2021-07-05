@@ -5,9 +5,7 @@ Here is a small description to do the integration between your home assistant, a
 
 To do this, you need:
 - A running Home Assistant with Lovelace installed: https://www.home-assistant.io/lovelace/
-- The psa_car_controller (on a dedicated machine or on your home assistant server): https://github.com/flobz/psa_car_controller
-- OR
-- The psa_car_controller plugin available on the Flobz's repo: https://github.com/flobz/psacc-ha/tree/main/psacc-ha
+- The psa_car_controller (on a dedicated machine or on your home assistant server): https://github.com/flobz/psa_car_controller OR The psa_car_controller plugin available on the Flobz's repo: https://github.com/flobz/psacc-ha/tree/main/psacc-ha
 
 The goal will be to retrive information, from the URL http://yourIP:5000/get_vehicleinfo/yourVIN and http://yourIP:5000/charge_control?vin=yourVIN.
 It is a JSON, that will be parsed by Home Assistant.
