@@ -40,6 +40,11 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
         friendly_name: "Autonomy"
         unit_of_measurement: "km"
         value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["autonomy"] }}'
+       # Uncomment for miles instead of km
+       #e2008_battery_autonomy:
+        #friendly_name: "Autonomy"
+        #unit_of_measurement: "m"    
+        #value_template: "{{ ((state_attr('sensor.peugeot_e2008', 'energy')[0]['autonomy']) / 1.609) | round(0)}}"
       e2008_charging_status:
         friendly_name: "Charging Status"
         value_template: '{{ states.sensor.peugeot_e2008.attributes["energy"][0]["charging"]["status"] }}'
@@ -49,7 +54,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
         value_template: '{{ states.sensor.peugeot_e2008.attributes["timed_odometer"]["mileage"] }}'
        # Uncomment for miles instead of km
        #e2008_mileage:
-        #friendly_name: "Kilometerstand"
+        #friendly_name: "Mileage"
         #unit_of_measurement: "m"
         #value_template: "{{ ((state_attr('sensor.peugeot_e2008', 'timed_odometer')['mileage']) / 1.609) | round(2)}}"
 # Peugeot e2008 charge_control
