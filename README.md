@@ -51,7 +51,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
        #e2008_mileage:
         #friendly_name: "Kilometerstand"
         #unit_of_measurement: "m"
-        #value_template: "{{ ((state_attr('sensor.peugeot_e208', 'timed_odometer')['mileage']) / 1.609) | round(2)}}"
+        #value_template: "{{ ((state_attr('sensor.peugeot_e2008', 'timed_odometer')['mileage']) / 1.609) | round(2)}}"
 # Peugeot e2008 charge_control
   - platform: rest
     name: peugeot_e2008_charge_control
