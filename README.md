@@ -1,8 +1,12 @@
 # HomeAssistant - Peugeot Integration
+
+## About
 Here is a small description to do the integration between your home assistant, and your Peugeot vehicle, to have all information in a dashboard:
 
 ![image](https://user-images.githubusercontent.com/15648175/113413427-f9dad380-93ba-11eb-848b-1a290904a242.png)
 
+
+## Pre-requirements
 To do this, you need:
 - A running Home Assistant with Lovelace installed: https://www.home-assistant.io/lovelace/
 - The psa_car_controller (on a dedicated machine or on your home assistant server): https://github.com/flobz/psa_car_controller OR The psa_car_controller plugin available on the Flobz's repo: https://github.com/flobz/psacc-ha/tree/main/psacc-ha
@@ -11,6 +15,9 @@ The goal will be to retrive information, from the URL http://yourIP:5000/get_veh
 It is a JSON, that will be parsed by Home Assistant.
 
 This script will evolve, depending of releases of the psa_car_controller. And my time :)
+
+
+## Configuration
 
 Edit the file **/config/sensor.yaml** and add the following code, by replacing the URL with your own:
 
@@ -80,7 +87,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
 
 Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
 
-```
+```yaml
 # e2008 communication
 switch:
   - platform: command_line
@@ -99,10 +106,29 @@ switch:
 rest_command:
   e2008_wakeup:
     url: "http://IPofTheSoftware:5000/wakeup/YourVIN"
-```
-The first part is to change values and the second part is to wake up the vehicle, every morning at 6 AM:
 
+# e2008 custom charging threshold
+  e2008_change_charge_threshold:
+    url: "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage={{ states('input_number.e2008_charge_threshold_slider') | int }}"
+    method: GET
+
+input_number:
+  e2008_charge_threshold_slider:
+    name: Charging threshold
+    initial: 80
+    min: 50
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+
+input_button:
+  e2008_apply_charge_threshold_button:
+    name: Set charging threshold
+    icon: mdi:battery-charging
 ```
+The first part is to change values and the second part is to wake up the vehicle, every morning at 6 AM and to apply the charging threshold:
+
+```yaml
 - id: '1617352487'
   alias: WakeUp e2008
   description: ''
@@ -113,16 +139,23 @@ The first part is to change values and the second part is to wake up the vehicle
   action:
   - service: rest_command.e2008_wakeup
   mode: single
+- id: '1617352488'
+  alias: Change charging threshold e2008
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - input_button.e2008_apply_charge_threshold_button
+  condition: []
+  action:
+  - service: rest_command.e2008_change_charge_threshold
+    data: {}
+  mode: single
 ```
-
-Restart the Home assistant.
-You should now be able to see these entities:
-
-![image](https://user-images.githubusercontent.com/15648175/113413669-7a99cf80-93bb-11eb-8744-78edec8c92e2.png)
 
 In my **customize.yaml** file, I also added this:
 
-```
+```yaml
 # Add an entry for each entity that you want to overwrite.
   switch.e2008_change_threshold:
     assumed_state: false
@@ -132,9 +165,18 @@ In my **customize.yaml** file, I also added this:
     assumed_state: false
 ```
 
+Restart the Home assistant.
+
+
+## User Interface / Dashboard
+
+You should now be able to see these entities:
+
+![image](https://user-images.githubusercontent.com/15648175/113413669-7a99cf80-93bb-11eb-8744-78edec8c92e2.png)
+
 You can now add a beautiful dashboard, to see your values:
 
-```
+```yaml
 type: entities
 entities:
   - entity: sensor.e2008_mileage
@@ -160,6 +202,9 @@ entities:
   - entity: switch.e2008_clim
     secondary_info: last-updated
     name: Activate Clim
+  - entity: input_number.e2008_charge_threshold_slider
+  - entity: input_button.e2008_apply_charge_threshold_button
+    secondary_info: none
   - entity: automation.wakeup_e2008
     secondary_info: last-triggered
 title: Peugeot e2008
@@ -179,7 +224,7 @@ To have a more viewable view of the battery, like this:
 
 Use the following code in your dashboard:
 
-```
+```yaml
 type: gauge
 entity: sensor.e2008_battery_level
 min: 0
