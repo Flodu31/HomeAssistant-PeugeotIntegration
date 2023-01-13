@@ -5,9 +5,12 @@ Here is a small description to do the integration between your home assistant, a
 
 ![image](https://user-images.githubusercontent.com/15648175/113413427-f9dad380-93ba-11eb-848b-1a290904a242.png)
 
-
 ## Pre-requirements
+
+*Use [this full external tutorial](https://return2.net/opel-peugeot-electric-vehicle-set-charging-threshold-limit/) that describes the entire installation process of this integration, including the PSA Car Controller configuration.*
+
 To do this, you need:
+
 - A running Home Assistant with Lovelace installed: https://www.home-assistant.io/lovelace/
 - The psa_car_controller (on a dedicated machine or on your home assistant server): https://github.com/flobz/psa_car_controller OR The psa_car_controller plugin available on the Flobz's repo: https://github.com/flobz/psacc-ha/tree/main/psacc-ha
 
