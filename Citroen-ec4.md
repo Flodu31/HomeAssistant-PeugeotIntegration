@@ -1,8 +1,8 @@
 # HomeAssistant - Peugeot Integration
 
 ## About
-I adjusted the original https://github.com/Flodu31/HomeAssistant-PeugeotIntegration configs to my citroën. 
-I also add icon_templates, so from now icon are changing based on some conditions.
+I adjusted the original https://github.com/Flodu31/HomeAssistant-PeugeotIntegration configs for my Citroën. 
+I also add `icon_templates`, so from now icons are changing based on some conditions.
 I also added buttons to start/stop preconditioning. 
 
 Here is a small description to do the integration between your home assistant, and your Citroën vehicle, to have all information in a dashboard:
