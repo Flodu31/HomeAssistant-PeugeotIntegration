@@ -7,6 +7,8 @@ I also added buttons to start/stop preconditioning.
 
 Here is a small description to do the integration between your home assistant, and your Citroën vehicle, to have all information in a dashboard:
 
+![image](https://user-images.githubusercontent.com/7179591/213177153-10dd748e-3565-44a8-ac3e-89aa4b87de47.png)
+
 
 ## Pre-requirements
 
