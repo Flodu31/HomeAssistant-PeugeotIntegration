@@ -1,7 +1,7 @@
 # HomeAssistant - Peugeot Integration
 
 ## About
-Here is a small description to do the integration between your home assistant, and your Peugeot vehicle, to have all information in a dashboard:
+Here is a small description to do the integration between your home assistant, and your Peugeot vehicle ([Citroën](./Citroen-ec4.md)), to have all information in a dashboard:
 
 ![image](https://user-images.githubusercontent.com/15648175/113413427-f9dad380-93ba-11eb-848b-1a290904a242.png)
 
