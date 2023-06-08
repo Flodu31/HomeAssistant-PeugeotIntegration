@@ -91,18 +91,21 @@ Edit the file **/config/command_line.yaml** and add the following code, by repla
 
 ```yaml
 # e2008 communication
-switch:
-  - platform: command_line
-    switches:
-      e2008_change_threshold:
-        command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=80"
-        command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=100"
-      e2008_change_charge_hour:
-        command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=5&minute=0"
-        command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=0&minute=0"
-      e2008_clim:
-        command_on: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/1"
-        command_off: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/0"
+  - switch:
+      name: e2008_change_threshold
+      unique_id: e2008_change_threshold
+      command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=80"
+      command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&percentage=100"
+  - switch:
+      name: e2008_change_charge_hour
+      unique_id: e2008_change_charge_hour
+      command_on: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=5&minute=0"
+      command_off: curl -s "http://IPofTheSoftware:5000/charge_control?vin=YourVIN&hour=0&minute=0"
+  - switch:
+      name: e2008_clim
+      unique_id: e2008_clim
+      command_on: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/1"
+      command_off: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/0"
         
 ```
 Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
