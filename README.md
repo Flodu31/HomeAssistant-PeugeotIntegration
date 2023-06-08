@@ -87,8 +87,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
         unit_of_measurement: "%"
         value_template: '{{ states.sensor.peugeot_e2008_charge_control.attributes["percentage_threshold"] }}'
 ```
-
-Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
+Edit the file **/config/command_line.yaml** and add the following code, by replacing the URL with your own:
 
 ```yaml
 # e2008 communication
@@ -104,7 +103,11 @@ switch:
       e2008_clim:
         command_on: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/1"
         command_off: curl -s "http://IPofTheSoftware:5000/preconditioning/YourVIN/0"
-       
+        
+```
+Edit the file **/config/configuration.yaml** and add the following code, by replacing the URL with your own:
+
+```yaml
 # e2008 WakeUp
 rest_command:
   e2008_wakeup:
