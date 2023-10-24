@@ -1,4 +1,4 @@
-# HomeAssistant - Peugeot Integration
+# HomeAssistant - Citroën ëC4 Integration
 
 ## About
 I adjusted the original https://github.com/Flodu31/HomeAssistant-PeugeotIntegration configs for my Citroën. 
@@ -207,7 +207,7 @@ input_button:
       icon: mdi:stop
 ```
 
-Now add some automations to buttons:
+Now add some automations to buttons. This can be done by editing **/config/automations.yaml** or on the HA web interface (Settings->Automations->Create Automation):
 ```yaml
 alias: ec4 - activate preconditioning
 description: ""
@@ -251,12 +251,13 @@ mode: single
 
 Refreshing next threshold time needs to be handled differently, that's why is not mention here. But it will be :-) 
 
-Restart the Home assistant.
+Restart the Home Assistant.
 
 
 ## User Interface / Dashboard
 
 You can now add a beautiful dashboard, to see your values:
+Note: adding images to the local filesystem requires you to copy them manually and to configure HA to host them. To allow this, use the following page as reference: [HTTP integration](https://www.home-assistant.io/integrations/http/#hosting-files). Short version: create a _www_ folder inside the _config_ folder. Restart HA. Place your images on _/config/www_ , use _/local/yourfile.xyz_ as URL.
 
 ```yaml
 type: entities
