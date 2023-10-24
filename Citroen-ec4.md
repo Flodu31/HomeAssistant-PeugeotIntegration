@@ -154,7 +154,7 @@ Edit the file **/config/sensor.yaml** and add the following code, by replacing t
 - platform: template
   sensors:
     ec4_stop_hour:
-      friendly_name: "Charging postponed until"
+       friendly_name: "Next charging stop hour"
       value_template: "{{ state_attr('sensor.citroen_ec4_charge_control', '_next_stop_hour') }}"
       icon_template: mdi:clock-time-four-outline
     ec4_threshold:
